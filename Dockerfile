@@ -4,7 +4,7 @@
 # If you need more help, visit the Dockerfile reference guide at
 # https://docs.docker.com/engine/reference/builder/
 
-ARG PYTHON_VERSION=3.11.4
+ARG PYTHON_VERSION=3.9
 FROM python:${PYTHON_VERSION}-slim as base
 
 # Prevents Python from writing pyc files.
@@ -46,4 +46,4 @@ COPY . .
 EXPOSE 2466
 
 # Run the application.
-CMD streamlit run test.py --server.port 2466
+CMD python server.py --server.port 2466
