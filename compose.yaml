@@ -13,6 +13,13 @@ services:
       context: .
     ports:
       - 2466:2466
+volumes:
+  volume_name:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=model_efs,rw,nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport
+      device: ":/"
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
