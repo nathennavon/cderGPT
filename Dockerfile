@@ -14,7 +14,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # the application crashes without emitting any logs due to buffering.
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /ec2_streamlit_app/
+WORKDIR /home/ec2-user/
+
 
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
@@ -34,7 +35,7 @@ WORKDIR /ec2_streamlit_app/
 # into this layer.
 RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
-    python -m pip install -r requirements.txt
+    python -m pip install -r /cdergpt/requirements.txt
 
 # Switch to the non-privileged user to run the application.
 #USER appuser
@@ -46,4 +47,5 @@ COPY . .
 EXPOSE 2466
 
 # Run the application.
-CMD python server.py --server.port 2466
+CMD python server.py 
+##--server.port 2466
