@@ -5,8 +5,7 @@ import boto3
 app = FastAPI()
 
 # Configure AWS credentials
-aws_access_key_id = "AKIA56SCV4ZOD2UMAEFT"
-aws_secret_access_key = "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"
+
 
 # Create a boto3 client object with explicit credentials
 session = boto3.Session(
